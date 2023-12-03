@@ -1,0 +1,512 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Photography Booking API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "加上 JWT token: Bearer [token]"
+    }
+  },
+  "paths": {
+    "/api/v1/member/register": {
+      "post": {
+        "tags": [
+          "Member"
+        ],
+        "description": "會員註冊",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "輸入會員資料",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "andy@test.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "test1234"
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Andy"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "photographer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "idToken": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjBiYmQyOTllODU2MmU3MmYyZThkN2YwMTliYTdiZjAxMWFlZjU1Y2EiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoibWFtYSIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9waG90b2dyYXBoZXItYm9va2luZy10ZXN0IiwiYXVkIjoicGhvdG9ncmFwaGVyLWJvb2tpbmctdGVzdCIsImF1dGhfdGltZSI6MTcwMTYxNzM5MCwidXNlcl9pZCI6InBxMjVrZnMxZVpQMWRBTmdIajlYakNJNWliTjIiLCJzdWIiOiJwcTI1a2ZzMWVaUDFkQU5nSGo5WGpDSTVpYk4yIiwiaWF0IjoxNzAxNjE3MzkwLCJleHAiOjE3MDE2MjA5OTAsImVtYWlsIjoibWFtYUB0ZXN0LmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW1hQHRlc3QuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.HrC-z5TsOVWvQSc9FtpFnfrb4f0n3Bl6a6MINhJ4pV5esi5fDLcpA33eWF1-wc5rK0yHm0xy4QQ-I0iBEi7QXbx9JOYWq69QvwUpnov-DzIofAl4hA1WDOXcDs7fHmwjLQi1uWTjgPXLJWwPZeiuT8QlacJZ3CqlWsJ9_pK2rDUPNJHcCn-7e-oPOgnNQzHKyM2lzXIpqPCJGEbumxgwJ0ykV0mby_R1l40zLI4A0vmgkjvirPfFXUrjJIWelJ8GPTJbjoBoGwFNX2JaoeDJ1q3hMvr78WElgrR9Im9Tu1NgIB6lekeWlDcg-FPJ6wPpP02txUtJN4dmNgpaLf52fA"
+                },
+                "refreshToken": {
+                  "type": "string",
+                  "example": "AMf-vBxkLakPs4RY_jYh2sdEK5NFWcu5mFDENZu60J--aIuqy86z7FM3xSMy1bBQft3ffxQ3HsnVoUjVe3vof5E7uNFtZ8QwjSQ0MKTNFRhctN8BlA5tYBxGf4wN53YEg9wKr71Pp3bvvdYvFa8yI0V2hjq9_d_Dr-1x-2WFE7zFO3fBNulVxWqtAEm7TU5n1q1jwFiITwcnVViBojqiHF0LLazVb6NjIpbc1cu4ZEH-uQ8jU6QZsCk"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/member/login": {
+      "post": {
+        "tags": [
+          "Member"
+        ],
+        "description": "會員登入",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "會員資料",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "andy@test.com"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "test1234"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uid": {
+                      "type": "string",
+                      "example": "nkgFQg8NcsUVI4ZN1XiNS2kHbx93"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "photographer"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "andy@test.com"
+                    },
+                    "idToken": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjBiYmQyOTllODU2MmU3MmYyZThkN2YwMTliYTdiZjAxMWFlZjU1Y2EiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQW5keTExIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3Bob3RvZ3JhcGhlci1ib29raW5nLXRlc3QiLCJhdWQiOiJwaG90b2dyYXBoZXItYm9va2luZy10ZXN0IiwiYXV0aF90aW1lIjoxNzAxNjIwMTI2LCJ1c2VyX2lkIjoibmtnRlFnOE5jc1VWSTRaTjFYaU5TMmtIYng5MyIsInN1YiI6Im5rZ0ZRZzhOY3NVVkk0Wk4xWGlOUzJrSGJ4OTMiLCJpYXQiOjE3MDE2MjAxMjYsImV4cCI6MTcwMTYyMzcyNiwiZW1haWwiOiJhbmR5QHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFuZHlAdGVzdC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.iZ_EqlDArlbl6KFxBNyfxIKwAYuHrsuxHpT7TaRcS9oEF_md4fsY50U7kcCvqhcfRdM3oIuAPnWkpJbd6jb5iFsqMaQ6Q3x3DFzKsijxzwfz2hJq_D9lCQtunnS8ZzIcD-U6i72-_s4TdY9ITDwOGFNboUPzWkkWDac2TDtO1pJT11F7Ixan-C9jF9mJAwB-CZxQC1HNZYv8uscTtdywp_a_9dOOyQSMuWvsxD5Rh-nmT289tHw5B184nLMOxqxHluBT4ji_bRIHWTplMBFvj5WGC3h6VfyqjxCeTzJw1N-nC7lh6lDRmUCItF9buKDuO9BBFTSujYqOn7yuGweKMw"
+                    },
+                    "refreshToken": {
+                      "type": "string",
+                      "example": "AMf-vBzcPWTWT_uKDzCuGRCXASLxtK6LtZR6EQpP9eIhsYNUj8vGGW7iweW5iGQKsUwU5KjspH2sHfYY_ew602znHVuBjigz6o3mrL6Zqep30PMzDVfnfu-0RAIN2fwCkG_Z7anAiUmhw0FJOSemxMiieRk_eSXLSXWKgAJUUFGvEdL_Jce85GKgNliW4yaSSd1oNKg5YNK-tObNgoWz8iobzAcraMBEQdszMwA0a9YrxOucgUA2Hsg"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/member/getMember": {
+      "get": {
+        "tags": [
+          "Member"
+        ],
+        "description": "取得會員個人資訊",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uid": {
+                      "type": "string",
+                      "example": "nkgFQg8NcsUVI4ZN1XiNS2kHbx93"
+                    },
+                    "photoURL": {
+                      "type": "string",
+                      "example": "https://www.ysnp.gov.tw/FileDownload/ContentManagement/20200917192037311936059.jpg"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "photographer"
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "Andy22"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "Andy@test.com"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/member/{uid}": {
+      "put": {
+        "tags": [
+          "Member"
+        ],
+        "description": "更新會員資料",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "會員資料",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "displayName": {
+                  "type": "string",
+                  "example": "Andy"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "091234567"
+                },
+                "photoURL": {
+                  "type": "string",
+                  "example": "https://www.ysnp.gov.tw/FileDownload/ContentManagement/20200917192037311936059.jpg"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uid": {
+                      "type": "string",
+                      "example": "nkgFQg8NcsUVI4ZN1XiNS2kHbx93"
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "Andy"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "Andy@test.com"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "photographer"
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "example": "091234567"
+                    },
+                    "photoURL": {
+                      "type": "string",
+                      "example": "https://www.ysnp.gov.tw/FileDownload/ContentManagement/20200917192037311936059.jpg"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Member"
+        ],
+        "description": "刪除會員",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "刪除成功"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/member/updatePassword/{uid}": {
+      "post": {
+        "tags": [
+          "Member"
+        ],
+        "description": "變更密碼",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "請輸入密碼資料",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "allen@test.com"
+                },
+                "currentPassword": {
+                  "type": "string",
+                  "example": "test5678"
+                },
+                "newPassword": {
+                  "type": "string",
+                  "example": "test6789"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "密碼更新成功"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/member/forgetEmail": {
+      "post": {
+        "tags": [
+          "Member"
+        ],
+        "description": "忘記密碼寄發Ｅmail",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "請輸入 Email",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "andy@test.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
