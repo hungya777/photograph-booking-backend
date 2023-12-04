@@ -1,12 +1,15 @@
+require('dotenv').config();
 const swaggerAutogen = require('swagger-autogen')();
+
+const isProducton = process.env.NODE_ENV === 'production';
 
 const doc = {
   info: {
     title: 'Photography Booking API',
     description: 'Description'
   },
-  host: 'localhost:3000',
-  schemes : ['http', 'https'],
+  host: process.env.SWAGGER_HOST,
+  schemes : isProducton ? ['https'] : ['http'],
   securityDefinitions : {
     apiKeyAuth : {
         type : 'apiKey',
