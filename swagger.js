@@ -5,7 +5,7 @@ const doc = {
     title: 'Photography Booking API',
     description: 'Description'
   },
-  host: "localhost:3000",
+  host: "photograph-booking-backend.zeabur.app",
   schemes : ['https','http'],
   securityDefinitions : {
     apiKeyAuth : {
