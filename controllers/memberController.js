@@ -46,7 +46,6 @@ exports.login = async (req, res, next) => {
   try {
     let result = await memberModel.loginMember(data.email, data.password);
     let member = await memberModel.getMember(result.data.localId);
-    console.log(member,"member")
     res.send({
       status : "success",
       data: {

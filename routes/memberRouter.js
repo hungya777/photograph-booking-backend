@@ -39,7 +39,7 @@ router.post('/login',
         required: true,
         schema: {
           "email": "andy@test.com",
-          "phoneNumber": "test1234",
+          "password": "test1234"
         }
     } */
 

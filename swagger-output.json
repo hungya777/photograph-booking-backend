@@ -8,6 +8,7 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "https",
     "http"
   ],
   "securityDefinitions": {
@@ -106,7 +107,7 @@
                   "type": "string",
                   "example": "andy@test.com"
                 },
-                "phoneNumber": {
+                "password": {
                   "type": "string",
                   "example": "test1234"
                 }
