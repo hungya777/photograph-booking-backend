@@ -162,25 +162,23 @@ class MemberModel {
       "emailNotification": false, // email 是否驗證
       "phoneNumber": "", // 會員電話
       "photographyDetails": { // 攝影師詳細資料 (role === "photographer" 時才會有，否則為 預設值)
-        "profile": {
-          "intro": "", // 簡介
-          "region": "", // 地區
-          "photographyTypes": [], // 攝影類型
-          "additional": "", // 附加信息
-          "socialLinks": {
-            "behance": "",   // behance link
-            "instagram": "", // instagram link
-            "facebook": "",  // facebook link
-            "youtube": ""    // youtube link
-          },
-          "backgroundImgUrl": "", // 背景圖片 URL
-          "fee": 0, // 費用
-          "regionFees": [], // 地區特定費用
-          "portfolio": [], // 作品集
-          "favoritesCount": 0, // 收藏數
-          "avgRating": 0, // 平均評分
-          "customerReviews": [] // 客戶評價
-        }
+        "intro": "", // 簡介
+        "region": "", // 地區
+        "photographyTypes": [], // 攝影類型
+        "additional": "", // 附加信息
+        "socialLinks": {
+          "behance": "",   // behance link
+          "instagram": "", // instagram link
+          "facebook": "",  // facebook link
+          "youtube": ""    // youtube link
+        },
+        "backgroundImgUrl": "", // 背景圖片 URL
+        "fee": 0, // 費用
+        "regionFees": [], // 地區特定費用
+        "portfolio": [], // 作品集
+        "favoritesCount": 0, // 收藏數
+        "avgRating": 0, // 平均評分
+        "customerReviews": [] // 客戶評價
       },
       "updateAt": "", // 更新時間
       "createdAt": "" // 建立時間
