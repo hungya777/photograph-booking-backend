@@ -13,6 +13,7 @@ require('dotenv').config();
 // 載入 Router
 var indexRouter = require('./routes/index');
 var memberRouter = require('./routes/memberRouter');
+var photographerRouter = require('./routes/photographerRouter');
 
 var app = express();
 
@@ -55,6 +56,8 @@ app.use(cors());
 // Router
 app.use('/', indexRouter);
 app.use('/api/v1/member', memberRouter);
+app.use('/api/v1/photographer', photographerRouter);
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler

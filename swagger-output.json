@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "photograph-booking-backend.zeabur.app",
   "basePath": "/",
   "schemes": [
     "https",
@@ -506,6 +506,586 @@
             "description": "Internal Server Error"
           }
         }
+      }
+    },
+    "/api/v1/photographer/all": {
+      "get": {
+        "tags": [
+          "PhotoGrapher"
+        ],
+        "description": "取得全部攝影師",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "uid": {
+                        "type": "string",
+                        "example": "ABQAULEsOne1NS4nd75UKSRpSAJ2"
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "example": "Andy"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "photographer"
+                      },
+                      "photoURL": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "andy@test.com"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "photographyDetails": {
+                        "type": "object",
+                        "properties": {
+                          "customerReviews": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "socialLinks": {
+                            "type": "object",
+                            "properties": {
+                              "youtube": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "behance": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "facebook": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "instagram": {
+                                "type": "string",
+                                "example": ""
+                              }
+                            }
+                          },
+                          "photographyTypes": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "regionFees": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "portfolio": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "intro": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "additional": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "fee": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "avgRating": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "region": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "favoritesCount": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "backgroundImgUrl": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/photographer/details/{uid}": {
+      "get": {
+        "tags": [
+          "PhotoGrapher"
+        ],
+        "description": "取得全部攝影師",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "uid": {
+                        "type": "string",
+                        "example": "ABQAULEsOne1NS4nd75UKSRpSAJ2"
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "example": "Andy"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "photographer"
+                      },
+                      "photoURL": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "andy@test.com"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "photographyDetails": {
+                        "type": "object",
+                        "properties": {
+                          "customerReviews": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "socialLinks": {
+                            "type": "object",
+                            "properties": {
+                              "youtube": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "behance": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "facebook": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "instagram": {
+                                "type": "string",
+                                "example": ""
+                              }
+                            }
+                          },
+                          "photographyTypes": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "regionFees": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "portfolio": {
+                            "type": "array",
+                            "example": [],
+                            "items": {}
+                          },
+                          "intro": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "additional": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "fee": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "avgRating": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "region": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "favoritesCount": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "backgroundImgUrl": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PhotoGrapher"
+        ],
+        "description": "更新單一攝影師個人簡歷",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "攝影師個人履歷資料",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerReviews": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "clientName": {
+                        "type": "string",
+                        "example": "Amy"
+                      },
+                      "review": {
+                        "type": "string",
+                        "example": "非常專業的攝影師，照片質感很好！"
+                      },
+                      "rating": {
+                        "type": "number",
+                        "example": 5
+                      }
+                    }
+                  }
+                },
+                "socialLinks": {
+                  "type": "object",
+                  "properties": {
+                    "behance": {
+                      "type": "string",
+                      "example": "behance.net/yourprofile"
+                    },
+                    "instagram": {
+                      "type": "string",
+                      "example": "instagram.com/yourprofile"
+                    },
+                    "facebook": {
+                      "type": "string",
+                      "example": "facebook.com/yourprofile"
+                    },
+                    "youtube": {
+                      "type": "string",
+                      "example": "youtube.com/yourchannel"
+                    }
+                  }
+                },
+                "photographyTypes": {
+                  "type": "array",
+                  "example": [
+                    "商業攝影",
+                    "婚禮攝影"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "regionFees": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "region": {
+                        "type": "string",
+                        "example": "新北市"
+                      },
+                      "fee": {
+                        "type": "number",
+                        "example": 3000
+                      }
+                    }
+                  }
+                },
+                "portfolio": {
+                  "type": "array",
+                  "example": [
+                    "https://firestore/photo1",
+                    "https://firestore/photo2",
+                    "https://firestore/photo3"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "intro": {
+                  "type": "string",
+                  "example": "攝影愛好者"
+                },
+                "additional": {
+                  "type": "string",
+                  "example": "相機設備：Nikon D850, Canon EOS 5D Mark IV"
+                },
+                "fee": {
+                  "type": "number",
+                  "example": 3000
+                },
+                "avgRating": {
+                  "type": "number",
+                  "example": 4.9
+                },
+                "region": {
+                  "type": "string",
+                  "example": "新北市"
+                },
+                "favoritesCount": {
+                  "type": "number",
+                  "example": 77
+                },
+                "backgroundImgUrl": {
+                  "type": "string",
+                  "example": "http://example.com/images/background.jpg"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uid": {
+                      "type": "string",
+                      "example": "oLUL1P3gHjVzlbFkrwDf4Rd8zcu2"
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "Amy"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "photographer"
+                    },
+                    "photoURL": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "amy@test.com"
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "photographyDetails": {
+                      "type": "object",
+                      "properties": {
+                        "customerReviews": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "clientName": {
+                                "type": "string",
+                                "example": "Amy"
+                              },
+                              "review": {
+                                "type": "string",
+                                "example": "非常專業的攝影師，照片質感很好！"
+                              },
+                              "rating": {
+                                "type": "number",
+                                "example": 5
+                              }
+                            }
+                          }
+                        },
+                        "socialLinks": {
+                          "type": "object",
+                          "properties": {
+                            "youtube": {
+                              "type": "string",
+                              "example": "youtube.com/yourchannel"
+                            },
+                            "behance": {
+                              "type": "string",
+                              "example": "behance.net/yourprofile"
+                            },
+                            "facebook": {
+                              "type": "string",
+                              "example": "facebook.com/yourprofile"
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "example": "instagram.com/yourprofile"
+                            }
+                          }
+                        },
+                        "photographyTypes": {
+                          "type": "array",
+                          "example": [
+                            "商業攝影",
+                            "婚禮攝影"
+                          ],
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "portfolio": {
+                          "type": "array",
+                          "example": [
+                            "https://firestore/photo1",
+                            "https://firestore/photo2",
+                            "https://firestore/photo3"
+                          ],
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "regionFees": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fee": {
+                                "type": "number",
+                                "example": 3000
+                              },
+                              "region": {
+                                "type": "string",
+                                "example": "新北市"
+                              }
+                            }
+                          }
+                        },
+                        "additional": {
+                          "type": "string",
+                          "example": "相機設備：Nikon D850, Canon EOS 5D Mark IV"
+                        },
+                        "fee": {
+                          "type": "number",
+                          "example": 3000
+                        },
+                        "intro": {
+                          "type": "string",
+                          "example": "攝影愛好者"
+                        },
+                        "avgRating": {
+                          "type": "number",
+                          "example": 4.9
+                        },
+                        "favoritesCount": {
+                          "type": "number",
+                          "example": 77
+                        },
+                        "region": {
+                          "type": "string",
+                          "example": "新北市"
+                        },
+                        "backgroundImgUrl": {
+                          "type": "string",
+                          "example": "http://example.com/images/background.jpg"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     }
   }
